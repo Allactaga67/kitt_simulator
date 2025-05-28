@@ -1,0 +1,11 @@
+{
+    "music_settings": {
+        "default_volume": 1.0,
+        "supported_formats": [
+            ".mp3",
+            ".wav",
+            ".ogg"
+        ],
+        "music_directory": "music"
+    }
+}
