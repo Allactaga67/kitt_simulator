@@ -1,0 +1,14 @@
+{
+    "music_settings": {
+        "default_volume": 1.0,
+        "supported_formats": [".mp3", ".wav", ".ogg"],
+        "music_directory": "music"
+    },
+    "GOOGLE_API_KEY": "AIzaSyD4wdZn3d99rjVVNdMpWpEmEWLcBs4mryw",
+    "MUSIC_DIR": "music",
+    "DEFAULT_VOLUME": 0.5,
+    "google_api_key": "AIzaSyD4wdZn3d99rjVVNdMpWpEmEWLcBs4mryw",
+    "google.generativeai": "AIzaSyD4wdZn3d99rjVVNdMpWpEmEWLcBs4mryw",
+    "music_dir": "music",
+    "volume": 0.5
+} 
