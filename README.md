@@ -30,18 +30,18 @@ The simulation is built with a modular approach in Python, with different aspect
 * **Core Modules:**
     * **Main Simulation Engine** (`main_simulation.py`): Acts as the main game engine. It handles the primary simulation loop, parses user commands, and orchestrates interactions between K.I.T.T., the road environment, and other game systems.
     * **Vehicle Definitions** (`vehicles.py`): Defines the base `Vehicle` class and specialized vehicle types like `Car`, `Truck`, and `Motorcycle`. Crucially, it defines the `KITT` class, which inherits from `Car` and incorporates all its unique abilities and attributes (damage, score, shield, turbo, autopilot, AI chat, music player integration, radar, and drift capabilities).
-    * **Road & Environment Management** (`road_manager.py`): Manages the road environment, including its length, number of lanes, and the generation and basic behavior of AI-controlled traffic. It's also responsible for the text-based rendering of the road and all vehicles, and manages intersection logic for events like drifts. This module uses `ai_vehicle_config.cfg` for AI vehicle model variety.
-    * **K.I.T.T. AI Interface** (`kitt_ai.py`): Integrates with the Google Gemini API to provide K.I.T.T.'s conversational abilities. It manages the conversation history and uses a system prompt to guide the AI's responses to align with K.I.T.T.'s persona, addressing the user as "Michael."
+    * **Road & Environment Management** (`road_management.py`): Manages the road environment, including its length, number of lanes, and the generation and basic behavior of AI-controlled traffic. It's also responsible for the text-based rendering of the road and all vehicles, and manages intersection logic for events like drifts. This module uses `vehicle_config.cfg` for AI vehicle model variety.
+    * **K.I.T.T. AI Interface** (`AI.py`): Integrates with the Google Gemini API to provide K.I.T.T.'s conversational abilities. It manages the conversation history and uses a system prompt to guide the AI's responses to align with K.I.T.T.'s persona, addressing the user as "Michael."
     * **Music Player** (`music_player.py`): Implements an interactive music player using `pygame.mixer`. It allows users to play, stop, pause, and control the volume of music tracks stored locally in a `music` directory. Configuration for this module is handled by `config.json`.
-    * **Drift Minigame** (`drift_game.py`): Contains the logic for a standalone, terminal-based reaction time mini-game that is triggered when K.I.T.T. initiates a drift, typically at intersections.
+    * **Drift Minigame** (`drift.py`): Contains the logic for a standalone, terminal-based reaction time mini-game that is triggered when K.I.T.T. initiates a drift, typically at intersections.
     * **Music Player Configuration** (`config.json`): A JSON file used to configure settings for the `music_player.py` module, such as default volume, supported audio formats, and the music directory path.
-    * **AI Vehicle Configuration** (`ai_vehicle_config.cfg`): (Referenced in `road_manager.py`) This file is intended to store configurations for the makes and models of AI vehicles to provide variety in the simulation.
+    * **AI Vehicle Configuration** (`vehicle_config.cfg`): This file stores configurations for the makes and models of AI vehicles to provide variety in the simulation, used by `road_management.py`.
 
 ## Key Techniques & Technologies
 
 * **Programming Language:** Python 3
 * **Artificial Intelligence:**
-    * Google Gemini API (`google-generativeai` library) for natural language understanding and generation, enabling K.I.T.T.'s conversational persona.
+    * Google Gemini API (`google-genai` library) for natural language understanding and generation, enabling K.I.T.T.'s conversational persona.
     * System prompts are used to define K.I.T.T.'s character and response style.
     * Conversation history management to provide context for ongoing interactions.
 * **Audio Playback:**
@@ -63,21 +63,14 @@ The simulation is built with a modular approach in Python, with different aspect
 1.  **Python Environment:** Ensure you have Python 3 installed.
 2.  **Install Dependencies:**
     ```bash
-    pip install google-generativeai pygame
+    pip install google-genai pygame
     ```
-3.  **API Key for K.I.T.T. AI:**
-    * You will need a Google Gemini API key.
-    * Open `kitt_ai.py` (formerly `AI.py`) and replace the placeholder API key with your actual key:
-        ```python
-        api_key = "YOUR_ACTUAL_GEMINI_API_KEY" #
-        ```
-        (It is highly recommended to use environment variables for API keys in real applications for better security.)
-4.  **Music Files:**
+3.  **Music Files:**
     * Create a directory named `music` in the same folder as the Python scripts. This is configurable via `config.json`.
     * Place your `.mp3`, `.wav`, or `.ogg` audio files (or other formats specified in `config.json`) into this `music` directory.
-5.  **Run the Simulation:**
+4.  **Run the Simulation:**
     ```bash
     python main_simulation.py
     ```
 
-Follow the on-screen prompts to interact with K.I.T.T. and the simulation.
+Follow the on-screen prompts to interact with K.I.T.T. and the simulation. You will need to ensure your Google Gemini API key is correctly configured within `AI.py` or through an environment variable as per the comments in that file for the AI chat feature to work.
